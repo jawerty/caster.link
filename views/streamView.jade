@@ -26,7 +26,7 @@ html
 			var videoStream = document.getElementById('video-channel');
 
 			connection.onstream = function (e) {
-				console.log("onstream"+e)
+				console.log("onstream"+videoStream)
 				videoStream.appendChild(e.mediaElement);
 			};
 
