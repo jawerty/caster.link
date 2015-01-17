@@ -157,32 +157,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: 'templates/home.html',
     controller: 'homeCtrl'
   })
-  // Each tab has its own nav history stack:
-
-  .state('stream', {
-    url: '/stream',
-    templateUrl: 'templates/stream.html',
-    controller: 'streamCtrl'
-  })
-
-  .state('streamId', {
-    url: '/stream/:streamId',
-    templateUrl: 'templates/streamView.html',
-    controller: 'streamViewCtrl'
-  })
-
-  .state('about', {
-    url: '/about',
-    templateUrl: 'templates/about.html',
-    controller: 'aboutCtrl'
-  })
-  
-  .state('settings', {
-    url: '/settings',
-    templateUrl: 'templates/settings.html',
-    controller: 'settingsCtrl'
-  });
-
   
 
   // if none of the above states are matched, use this as the fallback
