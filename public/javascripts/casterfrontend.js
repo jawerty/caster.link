@@ -43,7 +43,7 @@ function setupRTCMultiConnection(stream) {
   var hash = Math.random().toString(36).substr(2);
   var domain = 'http://www.caster.link';
   var resultingURL = domain+'/stream/'+hash+'?userid=' + connection.userid + '&sessionid=' + connection.channel;
-  $("#smsLink").attr("href", "sms:8564497043?body=\'"+resultingURL+"\'")
+  $("#smsLink").attr("href", resultingURL)
 }
 
 //'wss://wsnodejs.nodejitsu.com:443'
