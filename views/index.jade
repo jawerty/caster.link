@@ -19,7 +19,6 @@ block content
 			script(src="javascripts/app.js")
 			script(src="javascripts/controllers.js")
 			script(src="javascripts/services.js")
-			script(src="javascripts/casterfrontend.js")
 	body(ng-app="starter", ontouchstart="")
 		ion-nav-bar.bar-calm.nav-title-slide-ios7(align-title="center")
 			ion-nav-buttons(side="primary")
@@ -45,6 +44,5 @@ block content
 						#backCameraOption.cameraSwitch
 							| Back
 					.start.raised.green
-						a(href="", id="startLink")
+						a(href="/userView", id="startLink")
 							#startButton.center START
-					video#v(autoplay="")

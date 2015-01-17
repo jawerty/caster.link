@@ -43,7 +43,7 @@ function setupRTCMultiConnection(stream) {
   var hash = Math.random().toString(36).substr(2);
   var domain = 'http://www.caster.link';
   var resultingURL = '/'+hash+'?userid=' + connection.userid + '&sessionid=' + connection.channel;
-  $("#startLink").attr("href", resultingURL)
+  $("#smsLink").attr("href", "sms:8564497043?body="+resultingURL)
 }
 
 //'wss://wsnodejs.nodejitsu.com:443'
@@ -90,6 +90,12 @@ function gotStream(stream) {
   console.log(stream);
 
 
+  var video = document.querySelector('video');
+  video.id = 'self';
+  video[isFirefox ? 'mozSrcObject' : 'src'] = isFirefox ? stream : window.webkitURL.createObjectURL(stream);
+  video.play();
+  
+
   setupRTCMultiConnection(stream);
 }
 
@@ -120,12 +126,6 @@ function hasGetUserMedia() {
             navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
 }
-/*
-var video = document.querySelector('video');
-  video.id = 'self';
-  video[isFirefox ? 'mozSrcObject' : 'src'] = isFirefox ? stream : window.webkitURL.createObjectURL(stream);
-  video.play();
-  */
 
 navigator.getUserMedia = (navigator.getUserMedia ||
                             navigator.webkitGetUserMedia ||
