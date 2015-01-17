@@ -4,11 +4,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-function hasGetUserMedia() {
-  return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-            navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
-}
  
 $(document).ready(function(){
   var clickHandler = ("ontouchstart" in window ? "touchend" : "click")
@@ -25,7 +21,7 @@ $(document).ready(function(){
       var cameraFacing = "user";
     }
 
-    navigator.getUserMedia = (navigator.getUserMedia ||
+    /*navigator.getUserMedia = (navigator.getUserMedia ||
                             navigator.webkitGetUserMedia ||
                             navigator.mozGetUserMedia || 
                             navigator.msGetUserMedia);
@@ -67,20 +63,10 @@ $(document).ready(function(){
             constraints,
 
             // Success Callback
-            function(localMediaStream) {
-              console.log(localMediaStream);
-              window.stream = localMediaStream;
-              var videoElement = document.querySelector('video');
-            
-              videoElement.src = window.URL.createObjectURL(localMediaStream);                v = $("#v");
-              
-            },
+            gotStream,
 
             // Error Callback
-            function(err) {
-              // Log the error to the console.
-              console.log('The following error occurred when trying to use getUserMedia: ' + JSON.stringify(err));
-            }
+            getUserMediaError
           );
 
         });
@@ -89,9 +75,9 @@ $(document).ready(function(){
       
     } else {
       alert('getUserMedia() is not supported in your browser');
-    }
+    }*/
   });
-
+  
   if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
    $("#startButton")
    .bind("touchstart", function () {
