@@ -1,0 +1,112 @@
+block content
+	doctype html
+	html
+		head
+			meta(charset="utf-8")
+			meta(name="viewport", content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width")
+			title= "hello"
+			link(href="lib/ionic/css/ionic.css", rel="stylesheet")
+			link(href="css/style.css", rel="stylesheet")
+			link(href="css/ionicons.css", rel="stylesheet")
+
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
+		// ionic/angularjs js
+		script(src="lib/ionic/js/ionic.bundle.js")
+		// cordova script (this will be a 404 during development)
+		script(src="cordova.js")
+		// your app's js
+		script(src="js/app.js")
+		script(src="js/controllers.js")
+		script(src="js/services.js")
+	  body(ng-app="starter", ontouchstart="")
+		//
+				The nav bar that will be updated as we navigate between views.
+			  
+		ion-nav-bar.bar-calm.nav-title-slide-ios7(align-title="center")
+		  ion-nav-buttons(side="primary")
+			a.button.button-icon.button-clear.ion-home(ui-sref="home", ng-if="$root.settingsPage == true")  
+		  ion-nav-back-button.button-icon.ion-arrow-left-c
+		  ion-nav-buttons(side="secondary")
+			a.button.button-icon.button-clear.ion-gear-a(ui-sref="settings", ng-if="$root.settingsPage == false")  
+		//
+				The views will be rendered in the <ion-nav-view> directive below
+				Templates are in the /templates folder (but you could also
+				have templates inline in this html file if you'd like).
+			  
+		ion-nav-view.slide-left-right
+		script#templates/home.html(type="text/ng-template")
+		  <ion-view view-title="<h1 class='title' style='font-family:lato;font-size: 150%;'>Caster</h1>">
+		  <ion-content>
+		  <div class="card">
+		  <div class="item item-text-wrap" style="text-align: center;">
+		  Live stream videos as you record them on your mobile device (android)
+		  </div>
+		  </div>
+		  <input type="file" id="videoCaptureInput" accept="video/*" capture="camcorder" style="display:none;">
+		  <input type="file" id="audioCaptureInput" accept="audio/*" capture style="display:none;">
+		  <div class="start raised green">
+		  <div class="center" id="startButton">START</div>
+		  </div>
+		  </ion-content>
+		  </ion-view>
+		script#templates/settings.html(type="text/ng-template")
+		  <ion-view view-title="<h1 class='title' style='font-family:lato;font-size: 150%;'>Settings</h1>">
+		  <ion-content>
+		  <ion-list>
+		  <ion-item class="item-toggle">
+		  Option
+		  <label class="toggle">
+		  <input type="checkbox" ng-model="settings.enableSMS">
+		  <div class="track">
+		  <div class="handle"></div>
+		  </div>
+		  </label>
+		  </ion-item>
+		  </ion-list>
+		  </ion-content>
+		  </ion-view>
+		script#templates/stream.html(type="text/ng-template")
+		  <ion-view view-title="<h1>Caster</h1>">
+		  <ion-content>
+		  <ion-list>
+		  <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+		  <img ng-src="{{chat.face}}">
+		  <h2>{{chat.name}}</h2>
+		  <p>{{chat.lastText}}</p>
+		  <i class="icon ion-chevron-right icon-accessory"></i>
+		  <ion-option-button class="button-assertive" ng-click="remove(chat)">
+		  Delete
+		  </ion-option-button>
+		  </ion-item>
+		  </ion-list>
+		  </ion-content>
+		  </ion-view>
+		script#templates/streamView.html(type="text/ng-template")
+		  <ion-view view-title="Caster">
+		  <ion-content class="padding">
+		  <div class="list card">
+		  <div class="item item-divider">Recent Updates</div>
+		  <div class="item item-body">
+		  <div>
+		  There is a fire in <b>sector 3</b>
+		  </div>
+		  </div>
+		  </div>
+		  <div class="list card">
+		  <div class="item item-divider">Health</div>
+		  <div class="item item-body">
+		  <div>
+		  You ate an apple today!
+		  </div>
+		  </div>
+		  </div>
+		  <div class="list card">
+		  <div class="item item-divider">Upcoming</div>
+		  <div class="item item-body">
+		  <div>
+		  You have <b>29</b> meetings on your calendar tomorrow.
+		  </div>
+		  </div>
+		  </div>
+		  </ion-content>
+		  </ion-view>

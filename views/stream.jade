@@ -1,0 +1,28 @@
+html
+	head
+		title WebChannel
+		style.
+			#video-channel {
+			min-height: 400px;
+			min-width: 400px;
+			border: 1px solid #ccc;
+			}
+	body
+		h1= id
+		input(type='file', title='Choose Video')
+		video#video-channel(autoplay)
+
+		script(src='/javascripts/streamer.js')
+		script(src='/javascripts/initDataChannel.js')
+		script.
+			var streamer = new Streamer();
+			function onData(data) {
+			if (data.end) streamer.end();
+			else streamer.append(data);
+			}
+			streamer.push = function (chunk) {
+			console.log("pushed")
+			console.log(chunk)
+			setTimeout(offererDataChannel.send(chunk), 1000);
+			};
+		script(src='/javascripts/main.js')
