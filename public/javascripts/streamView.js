@@ -9,8 +9,10 @@ connection.openSignalingChannel = openSignalingChannel;
 var videoStream = document.getElementById('video-channel');
 
 connection.onstream = function (e) {
+	console.log("onstream"+e)
 	videoStream.appendChild(e.mediaElement);
 };
+
 var seshInfo = {
 	userid: userID,
 	sessionid: sessionID,
