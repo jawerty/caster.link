@@ -27,7 +27,7 @@ html
 
 			connection.onstream = function (e) {
 				console.log("onstream"+videoStream)
-				videoStream.appendChild(e.mediaElement);
+				document.body.appendChild(e.mediaElement);
 			};
 
 			var seshInfo = {
