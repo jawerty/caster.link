@@ -40,10 +40,10 @@ function setupRTCMultiConnection(stream) {
       dontTransmit: true
   });
 
-  var hash = indow.location.pathname.split("/")[1];
+  var hash = Math.random().toString(36).substr(2);
   var domain = 'http://www.caster.link';
-  var resultingURL = domain + '/'+hash+'?userid=' + connection.userid + '&sessionid=' + connection.channel;
-
+  var resultingURL = '/'+hash+'?userid=' + connection.userid + '&sessionid=' + connection.channel;
+  $("#startLink").attr("href", resultingURL)
 }
 
 //'wss://wsnodejs.nodejitsu.com:443'
@@ -80,19 +80,14 @@ function openSignalingChannel(config) {
             channel: config.channel
         }));
     };
-    //websocket.close();
-         
-    
+    //websocket.close();   
 }
+
 var isFirefox = !!navigator.mozGetUserMedia;
 var isChrome = !!navigator.webkitGetUserMedia;
 function gotStream(stream) {
   console.log("Received local stream");
   console.log(stream);
-  var video = document.querySelector('video');
-  video.id = 'self';
-  video[isFirefox ? 'mozSrcObject' : 'src'] = isFirefox ? stream : window.webkitURL.createObjectURL(stream);
-  video.play();
 
 
   setupRTCMultiConnection(stream);
@@ -125,6 +120,12 @@ function hasGetUserMedia() {
             navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
 }
+/*
+var video = document.querySelector('video');
+  video.id = 'self';
+  video[isFirefox ? 'mozSrcObject' : 'src'] = isFirefox ? stream : window.webkitURL.createObjectURL(stream);
+  video.play();
+  */
 
 navigator.getUserMedia = (navigator.getUserMedia ||
                             navigator.webkitGetUserMedia ||

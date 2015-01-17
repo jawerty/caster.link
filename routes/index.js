@@ -5,10 +5,18 @@
 var crypto = require('crypto');
 
 exports.index = function(req, res){
+
 	var id = crypto.randomBytes(20).toString('hex');
 	res.render('index', { id: id });
 }; 
 
-exports.streamView = function(req, res){
-	res.render('stream', { id: req.params.id });
+exports.streamView = function(req, res, next){
+	if (req.query.userid && req.query.sessionid) {
+	  	var uID = req.query.userid
+	  	var sID = req.query.sessionid;
+	  	res.render('stream', { id: req.params.id, title: '', userID: uID, sessionID: sID });
+	  } else {
+	  	console.log("No session and user data found.")
+	  	res.redirect("/")
+	  }
 };
