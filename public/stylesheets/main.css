@@ -1,0 +1,51 @@
+#cameraOptions {
+    margin: 2.5% auto;
+    width: calc(100% - 20px);
+    line-height: 50px;
+    text-align: center;
+}
+.cameraSwitch {
+    display: inline-block;
+    width: calc(50% - 4px);
+    border-radius: 2px;
+    border: 1px solid #ddd;
+    font-size: 150%;
+    background-color: #fff;
+    color: #646464;
+    text-align: center;
+}
+.cameraSwitch:active, .cameraSwitch:hover, .cameraSwitch.preactivated {
+    background-color: #4CD964;
+    color: #fff;
+    border: 1px solid #fff;
+    opacity: .6;
+}
+.cameraSwitch.activated {
+    background-color: #4CD964;
+    color: #fff;
+    border: 1px solid #fff;
+    opacity: 1;
+}
+/* Button */
+
+.start {
+    margin: 2% auto;
+    width: calc(100% - 20px);
+    line-height: 50px;
+    border-radius: 2px;
+    font-size: 150%;
+    background-color: #fff;
+    color: #646464;
+    text-align: center;
+}
+.start > paper-ripple {
+    border-radius: 2px;
+    overflow: hidden;
+}
+.start.green {
+    background-color: #FF3A2D;
+    color: #fff;
+}
+x .start.green:active, .start.green:hover, .start.green.fake-active {
+    opacity: .6;
+}

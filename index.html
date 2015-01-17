@@ -13,10 +13,41 @@
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
     <style>
+    #cameraOptions {
+      margin: 2.5% auto;
+      width: calc(100% - 20px);
+      line-height: 50px;
+      text-align: center;
+    }
+
+    .cameraSwitch {
+      display: inline-block;
+      width: calc(50% - 4px);
+      border-radius: 2px;
+      border: 1px solid #ddd;
+      font-size: 150%;
+      background-color: #fff;
+      color: #646464;
+      text-align: center;
+    }
+
+    .cameraSwitch:active, .cameraSwitch:hover,  .cameraSwitch.preactivated {
+      background-color: #4CD964;
+      color: #fff;
+      border: 1px solid #fff;
+      opacity: .6;
+    }
+
+    .cameraSwitch.activated {
+      background-color: #4CD964;
+      color: #fff;
+      border: 1px solid #fff;
+      opacity: 1;
+    }
 
     /* Button */
     .start {
-      margin: 2.5% auto;
+      margin: 2% auto;
       width: calc(100% - 20px);
       line-height: 50px;
       border-radius: 2px;
@@ -60,12 +91,13 @@
     <ion-nav-bar class="bar-calm nav-title-slide-ios7" align-title="center">
       <ion-nav-buttons side="primary">
        <a class="button button-icon button-clear ion-home" ui-sref="home" ng-if="$root.settingsPage == true"> </a>
+       <a class="button button-icon button-clear ion-help" ui-sref="about" ng-if="$root.settingsPage == false"> </a>
       </ion-nav-buttons>
       <ion-nav-back-button class="button-icon ion-arrow-left-c">
       </ion-nav-back-button>
       <ion-nav-buttons side="secondary">
 
-        <a class="button button-icon button-clear ion-gear-a" ui-sref="settings" ng-if="$root.settingsPage == false"> </a>
+        <a class="button button-icon button-clear ion-gear-a" ui-sref="about" ng-if="$root.settingsPage == false"> </a>
       </ion-nav-buttons>
     </ion-nav-bar>
     <!--
@@ -85,84 +117,21 @@
           </div>
           <input type="file" id="videoCaptureInput" accept="video/*" capture="camcorder" style="display:none;">
           <input type="file" id="audioCaptureInput" accept="audio/*" capture style="display:none;">
-
+          <div id="cameraOptions"
+          >
+            <div id="frontCameraOption"class="cameraSwitch activated">
+            Front
+            </div>
+            <div id="backCameraOption"class="cameraSwitch">
+            Back 
+            </div>
+          </div>
           <div class="start raised green">
-            <div class="center" id="startButton">START</div>
+            <a href=""><div class="center" id="startButton">START</div></a>
           </div>
+          <video id="v" autoplay></video>
         </ion-content>
       </ion-view>
-    </script>
-
-    <script id="templates/settings.html" type="text/ng-template">
-
-      <ion-view view-title="<h1 class='title' style='font-family:lato;font-size: 150%;'>Settings</h1>">
-        <ion-content>
-          <ion-list>
-            <ion-item class="item-toggle">
-              Option
-              <label class="toggle">
-                <input type="checkbox" ng-model="settings.enableSMS">
-                <div class="track">
-                  <div class="handle"></div>
-                </div>
-              </label>
-            </ion-item>
-          </ion-list>
-        </ion-content>
-      </ion-view>
-
-    </script>
-
-    <script id="templates/stream.html" type="text/ng-template">
-      <ion-view view-title="<h1>Caster</h1>">
-        <ion-content>
-          <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-              <img ng-src="{{chat.face}}">
-              <h2>{{chat.name}}</h2>
-              <p>{{chat.lastText}}</p>
-              <i class="icon ion-chevron-right icon-accessory"></i>
-
-              <ion-option-button class="button-assertive" ng-click="remove(chat)">
-                Delete
-              </ion-option-button>
-            </ion-item>
-          </ion-list>
-        </ion-content>
-      </ion-view>
-
-    </script>
-
-    <script id="templates/streamView.html" type="text/ng-template">
-      <ion-view view-title="Caster">
-        <ion-content class="padding">
-          <div class="list card">
-            <div class="item item-divider">Recent Updates</div>
-            <div class="item item-body">
-              <div>
-                There is a fire in <b>sector 3</b>
-              </div>
-            </div>
-          </div>
-          <div class="list card">
-            <div class="item item-divider">Health</div>
-            <div class="item item-body">
-              <div>
-                You ate an apple today!
-              </div>
-            </div>
-          </div>
-          <div class="list card">
-            <div class="item item-divider">Upcoming</div>
-            <div class="item item-body">
-              <div>
-                You have <b>29</b> meetings on your calendar tomorrow.
-              </div>
-            </div>
-          </div>
-        </ion-content>
-      </ion-view>
-
     </script>
   </body>
 </html>
