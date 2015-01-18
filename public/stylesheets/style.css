@@ -1,1 +1,69 @@
-/* Empty. Add your own CSS if you like */
+.card{
+	margin-left: auto;
+    margin-right: auto;
+}
+
+#stream-name{
+	margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+}
+
+#cameraOptions{
+	margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    margin: 2.5% auto;
+    line-height: 50px;
+    text-align: center;
+}
+
+.start {
+	margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+	line-height: 50px;
+	border-radius: 2px;
+	font-size: 150%;
+	background-color: #fff;
+	color: #646464;
+	text-align: center;
+}
+
+.start > paper-ripple {
+	border-radius: 2px;
+	overflow: hidden;
+}
+
+.start.green {
+	background-color: #FF3A2D;
+	color: #fff;
+}
+.start.green:active, .start.green:hover, .start.green.fake-active {
+	opacity: .6;
+}
+
+.cameraSwitch {
+	display: inline-block;
+	width: calc(50% - 4px);
+	border-radius: 2px;
+	border: 1px solid #ddd;
+	font-size: 150%;
+	background-color: #fff;
+	color: #646464;
+	text-align: center;
+}
+
+.cameraSwitch:active, .cameraSwitch:hover,  .cameraSwitch.preactivated {
+	background-color: #00ADEF;
+	color: #fff;
+	border: 1px solid #fff;
+	opacity: .4;
+}
+
+.cameraSwitch.activated {
+	background-color: #00ADEF;
+	color: #fff;
+	border: 1px solid #fff;
+	opacity: 1;
+}
