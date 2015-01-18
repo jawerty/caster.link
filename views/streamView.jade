@@ -110,6 +110,7 @@ html
 				websocket.onmessage = function (event) {
 					if (JSON.parse(event.data).streamName) {
 						console.log("Title: "+JSON.parse(event.data).streamName)
+						$(".title")[0].innerText += "— " + JSON.parse(event.data).streamName;
 					}
 					config.onmessage(JSON.parse(event.data));
 				};

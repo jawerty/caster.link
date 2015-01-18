@@ -63,9 +63,20 @@
 	z-index: 11;
 }
 
-.casterModal h1.title {
+.casterModal .header {
 	font-size: 25px;
 	border-bottom: 1px solid #ddd;
+	display: inline-block;
+	width: 100%;
+}
+
+.casterModal h1.title {
+	display:inline-block;
+}
+
+.casterModal .close {
+	margin-left: 20px;
+	display: inline-block;
 }
 
 .sharingOptions {

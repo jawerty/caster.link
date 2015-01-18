@@ -34,13 +34,15 @@ block content
 
 		.modalOverlay
 			#socialModal.casterModal
-				h1.title Social
+				.header
+					h1.title Social
+					.icon.ion-close-round.close
 				.content
 					.row.sharingOptions
 						.col.icon.ion-social-facebook.facebook
 							a(href="mailto:bogdanvitoc")
 						.col.icon.ion-social-twitter.twitter
-							a(href="mailto:bogdanvitoc")
+							//- a.twitter-share-button(href="https://twitter.com/share")
 					.row.sharingOptions
 						.col.icon.ion-email.email
 							
@@ -62,21 +64,21 @@ block content
 					header.toggleClass("reveal");
 				});
 				$("button.button.social").click(function() {
-					
+
 					modalOverlay.fadeToggle();
 				});
-				modalOverlay.click(function(e){
+				
+				$("#socialModal .close").click(function(e){
 					console.log(e.relatedTarget);
 					console.log("TOGGLE");
 					modalOverlay.fadeToggle();
 				});
-				
 				$(".icon.facebook").click(function(){
 
 				});
 
 				$(".icon.twitter").click(function(){
-
+					$($("a.twitter-share-button")[0]).click();	
 				});
 
 				$(".icon.email").click(function() {
@@ -90,5 +92,4 @@ block content
 					$($("body")[0]).append(a);
 					a.click();
 				});
-
 			});
