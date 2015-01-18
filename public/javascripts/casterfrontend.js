@@ -147,7 +147,8 @@ navigator.getUserMedia = (navigator.getUserMedia ||
             if (sourceInfo.kind === 'audio') {
               Audio.push(sourceInfo.id);
             } else if (sourceInfo.kind === 'video') {
-              if(sourceInfo.facing == "environment"){
+              var cameraFacing = localStorage.getItem("casterCameraFacing");
+              if(sourceInfo.facing == cameraFacing){
                 Video = sourceInfo.id;
               }
             } else {

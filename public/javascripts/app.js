@@ -13,12 +13,13 @@ $(document).ready(function(){
     //$("#videoCaptureInput").click();
     var tempFacing = $(".cameraSwitch.activated")[0].innerText;
 
-    if (tempFacing == "Front") {
-      var cameraFacing = "user";
-    } else if (tempFacing == "Back") {
-      var cameraFacing  =  "environment";
-    } else {
-      var cameraFacing = "user";
+    if(typeof(Storage) !== "undefined") {
+    // Code for localStorage/sessionStorage.
+      if (tempFacing == "Front") {
+        localStorage.setItem("casterCameraFacing", "user");
+      } else {
+        localStorage.setItem("casterCameraFacing", "environment");
+      }
     }
 
     /*navigator.getUserMedia = (navigator.getUserMedia ||
