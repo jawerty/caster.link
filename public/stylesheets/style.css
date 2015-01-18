@@ -50,19 +50,19 @@
 	border: 1px solid #ddd;
 	font-size: 150%;
 	background-color: #fff;
-	color: #646464;
+	color: #ddd;
 	text-align: center;
 }
 
 .cameraSwitch:active, .cameraSwitch:hover,  .cameraSwitch.preactivated {
-	background-color: #00ADEF;
+	background-color: #666;
 	color: #fff;
 	border: 1px solid #fff;
 	opacity: .4;
 }
 
 .cameraSwitch.activated {
-	background-color: #00ADEF;
+	background-color: #666;
 	color: #fff;
 	border: 1px solid #fff;
 	opacity: 1;
