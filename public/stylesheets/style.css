@@ -14,6 +14,22 @@ a{
     width: 65%;
 }
 
+#frontCameraOption{
+	border-right: 0;
+	-webkit-border-top-right-radius: 0;
+	-webkit-border-bottom-right-radius: 0;
+	-moz-border-top-right-radius: 0;
+	-moz-border-bottom-right-radius: 0;
+}
+
+#backCameraOption{
+	border-left: 0;
+	-webkit-border-top-left-radius: 0;
+	-webkit-border-bottom-left-radius: 0;
+	-moz-border-top-left-radius: 0;
+	-moz-border-bottom-left-radius: 0;
+}
+
 #cameraOptions{
 	margin-left: auto;
     margin-right: auto;
@@ -26,7 +42,7 @@ a{
 .start {
 	margin-left: auto;
     margin-right: auto;
-    width: 80%;
+    width: 70%;
 	line-height: 50px;
 	border-radius: 2px;
 	font-size: 150%;
@@ -51,7 +67,8 @@ a{
 .cameraSwitch {
 	display: inline-block;
 	width: calc(50% - 4px);
-	border: 1px solid #ddd;
+	border-radius: 2px;
+	outline: 1px solid #ddd;
 	font-size: 150%;
 	background-color: #fff;
 	color: #ddd;
