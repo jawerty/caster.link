@@ -68,11 +68,14 @@ a{
 	display: inline-block;
 	width: calc(50% - 4px);
 	border-radius: 2px;
-	outline: 1px solid #ddd;
+	border: 1px solid #ddd;
 	font-size: 150%;
 	background-color: #fff;
 	color: #ddd;
 	text-align: center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 .cameraSwitch:active, .cameraSwitch:hover,  .cameraSwitch.preactivated {
