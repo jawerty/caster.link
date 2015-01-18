@@ -1,0 +1,34 @@
+.user {
+	margin: 0;
+	overflow: hidden;
+	background-color: #222;
+}
+
+.user video {
+	width: 100%;
+}
+
+.user .bar-header {
+	background: linear-gradient(rgba(17, 193, 243, 0.6), rgba(17, 193, 243, 0.0));
+}
+
+.bar-header.reveal {
+	animation-name: reveal;
+	animation-duration: 2s;
+	animation-direction: alternate;
+	animation-fill-mode: forwards;
+	-webkit-animation-name: reveal;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-direction: alternate;
+	-webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes reveal {
+	from {background: linear-gradient(rgba(17, 193, 243, 0.6), rgba(17, 193, 243, 0.0));}
+	to {background: rgba(17, 193, 243, 0.6);
+}
+
+@keyframes reveal {
+	from {background: linear-gradient(rgba(17, 193, 243, 0.6), rgba(17, 193, 243, 0.0));}
+	to {background: rgba(17, 193, 243, 0.6);
+}
