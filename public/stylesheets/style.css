@@ -26,7 +26,7 @@ a{
 .start {
 	margin-left: auto;
     margin-right: auto;
-    width: 35%;
+    width: 80%;
 	line-height: 50px;
 	border-radius: 2px;
 	font-size: 150%;
@@ -51,7 +51,6 @@ a{
 .cameraSwitch {
 	display: inline-block;
 	width: calc(50% - 4px);
-	border-radius: 2px;
 	border: 1px solid #ddd;
 	font-size: 150%;
 	background-color: #fff;
