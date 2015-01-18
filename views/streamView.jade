@@ -89,7 +89,7 @@ html
 
 				function openSignalingChannel(config) {
 					config.channel = config.channel || this.channel;
-					var websocket = new WebSocket('ws://ec2-54-173-12-168.compute-1.amazonaws.com');
+					var websocket = new WebSocket('ws://brocast-signalingserver.herokuapp.com/');
 					websocket.onopen = function () {
 						setTimeout(function(){
 							$("video").on("click", function(e){
@@ -108,7 +108,7 @@ html
 
 					function openSignalingChannel(config) {
 						config.channel = config.channel || this.channel;
-						var websocket = new WebSocket('ws://ec2-54-173-12-168.compute-1.amazonaws.com/');
+						var websocket = new WebSocket('ws://brocast-signalingserver.herokuapp.com/');
 						websocket.onopen = function () {
 							setTimeout(function(){
 								$("video").on("click", function(e){
@@ -136,7 +136,7 @@ html
 					websocket.onerror = function(err) {
 						alert(JSON.stringify(err));
 
-						alert('Unable to connect to ws://ec2-54-173-12-168.compute-1.amazonaws.com');
+						alert('Unable to connect to ws://brocast-signalingserver.herokuapp.com');
 					};
 							
 
