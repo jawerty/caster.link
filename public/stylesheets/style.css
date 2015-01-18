@@ -4,19 +4,19 @@ a{
 }
 
 ::-webkit-input-placeholder {
-   color: red;
+   font-size: 13pt;
 }
 
-:-moz-placeholder { /* Firefox 18- */
-   color: red;  
+:-moz-placeholder { 
+   font-size: 13pt;
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
-   color: red;  
+::-moz-placeholder {  
+   font-size: 13pt;
 }
 
-:-ms-input-placeholder {  
-   color: red;  
+:-ms-input-placeholder { 
+   font-size: 13pt;
 }
 
 .card{
@@ -28,6 +28,7 @@ a{
 	margin-left: auto;
     margin-right: auto;
     width: 65%;
+    border-bottom: 1px solid #ccc;
 }
 
 #frontCameraOption{

@@ -34,8 +34,7 @@ block content
             .item.item-text-wrap(style="text-align: center;")
               | Live stream videos as you record them on your Android device.
 
-          #stream-name(style="text-align: center;")
-          .card(style="width: 60%;")
+          .card(style="width: 70%;")
             input#stream-name(type="text" placeholder="Name your stream...")
 
             input#videoCaptureInput(type="file", accept="video/*", capture="camcorder", style="display:none;")
@@ -45,6 +44,6 @@ block content
                   | Front
                 #backCameraOption.cameraSwitch
                   | Back
-            .start.raised.green
-              a(href="/userView", id="startButton")
-                #startButton.center START
+          .start.raised.green
+            a(href="/userView", id="startButton")
+              #startButton.center START
