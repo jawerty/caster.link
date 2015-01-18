@@ -7,10 +7,9 @@ html
 		link(href="../stylesheets/ionic.css", rel="stylesheet")
 		link(href="../stylesheets/style.css", rel="stylesheet")
 		link(href="../stylesheets/ionicons.css", rel="stylesheet")
-
-		script(src="../javascripts/ionic.bundle.js")
 		script.
 			localStorage.homeLink = "../templates/home.html"
+		script(src="../javascripts/ionic.bundle.js")
 		script(src="../javascripts/app.js")
 		script(src="../javascripts/controllers.js")
 		script(src="../javascripts/services.js")
@@ -32,7 +31,7 @@ html
 				}
 			}
 			
-			@media screen and (min-width: 481px) {
+			@media screen and (min-width: 480px) {
 				#video-channel {
 					width: 100%;
 					text-align: center;
@@ -52,104 +51,75 @@ html
 	body(ng-app="starter", ontouchstart="")
 
 		ion-header-bar.bar-calm.nav-title-slide-ios7(align-title='center')
-			h1.title() Caster
+			h1.title Caster
 
 		ion-content
-			div(id="video-channel")
-			script.
-				var sessionID = "#{sessionID}";
-				var userID = "#{userID}";
+		div(id="video-channel")
+		script.
+			var sessionID = "#{sessionID}";
+			var userID = "#{userID}";
 
-				console.log("Begin RTC Connection")
-				console.log(sessionID + " " + userID)
-				var connection = new RTCMultiConnection(sessionID);
-				connection.bandwidth = {};
-				connection.openSignalingChannel = openSignalingChannel;
-				var videoStream = document.getElementById('video-channel');
+			console.log("Begin RTC Connection")
+			console.log(sessionID + " " + userID)
+			var connection = new RTCMultiConnection(sessionID);
+			connection.bandwidth = {};
+			connection.openSignalingChannel = openSignalingChannel;
+			var videoStream = document.getElementById('video-channel');
 
-				connection.onstream = function (e) {
-					console.log("onstream"+videoStream);
-					e.mediaElement.id = "video-channnel";
+			connection.onstream = function (e) {
+				console.log("onstream"+videoStream);
+				e.mediaElement.id = "video-channnel";
 
-					document.getElementById("video-channel").appendChild(e.mediaElement);
+				document.getElementById("video-channel").appendChild(e.mediaElement);
+			};
+
+			var seshInfo = {
+				userid: userID,
+				sessionid: sessionID,
+				session: {
+					video: true,
+					oneway: true
+				}
+			};
+
+			if (userID && sessionID) {
+				connection.join(seshInfo);
+			}
+
+			function openSignalingChannel(config) {
+
+				config.channel = config.channel || this.channel;
+				console.log("config: "+JSON.stringify(config))
+				var websocket = new WebSocket('ws://brocast-signalingserver.herokuapp.com');
+				websocket.onopen = function () {
+				
+					
+					websocket.push(JSON.stringify({
+						open: true,
+						channel: config.channel
+					}));
+					if (config.callback) config.callback(websocket);
 				};
 
-				var seshInfo = {
-					userid: userID,
-					sessionid: sessionID,
-					session: {
-						video: true,
-						oneway: true
+				websocket.onerror = function(err) {
+					alert(JSON.stringify(err));
+
+					alert('Unable to connect to ws://brocast-signalingserver.herokuapp.com');
+				};
+
+				websocket.onmessage = function (event) {
+					if (JSON.parse(event.data).streamName) {
+						console.log("Title: "+JSON.parse(event.data).streamName)
 					}
+					config.onmessage(JSON.parse(event.data));
 				};
 
-				if (userID && sessionID) {
-					connection.join(seshInfo);
-				}
-
-				function openSignalingChannel(config) {
-					config.channel = config.channel || this.channel;
-					console.log("this"+config)
-					var websocket = new WebSocket('ws://brocast-signalingserver.herokuapp.com/');
-					websocket.onopen = function () {
-						setTimeout(function(){
-							$("video").on("click", function(e){
-								var parentOffset = $(this).parent().offset(); 
-								var width = $(this).width();
-								var height = $(this).height();
-								var relX = e.pageX - parentOffset.left;
-								var relY = e.pageY - parentOffset.top;
-								console.log(relX+" "+relY);
-								websocket.push(JSON.stringify({
-									data: {x: relX, y: relY, vX: width, vY: height},
-									channel: config.channel
-								}));
-							});
-						}, 5000)
-
-					function openSignalingChannel(config) {
-						config.channel = config.channel || this.channel;
-						var websocket = new WebSocket('ws://brocast-signalingserver.herokuapp.com/');
-						websocket.onopen = function () {
-							setTimeout(function(){
-								$("video").on("click", function(e){
-									var parentOffset = $(this).parent().offset(); 
-									var width = $(this).width();
-									var height = $(this).height();
-									var relX = e.pageX - parentOffset.left;
-									var relY = e.pageY - parentOffset.top;
-									console.log(relX+" "+relY);
-									websocket.push(JSON.stringify({
-										data: {x: relX, y: relY, vX: width, vY: height},
-										channel: config.channel
-									}));
-								});
-							}, 5000)
-															
-						
-						websocket.push(JSON.stringify({
-							open: true,
-							channel: config.channel
-						}));
-						if (config.callback) config.callback(websocket);
-					};
-
-					websocket.onerror = function(err) {
-						alert(JSON.stringify(err));
-
-						alert('Unable to connect to ws://brocast-signalingserver.herokuapp.com');
-					};
-							
-
-					websocket.onmessage = function (event) {
-						config.onmessage(JSON.parse(event.data));
-					};
-					websocket.push = websocket.send;
-					websocket.send = function (data) {
-						console.log(JSON.stringify(data))
-						websocket.push(JSON.stringify({
-							data: data,
-							channel: config.channel
-						}));
-					};
-				}
+				websocket.push = websocket.send;
+				websocket.send = function (data) {
+					console.log(JSON.stringify(data))
+					websocket.push(JSON.stringify({
+						data: data,
+						channel: config.channel
+					}));
+				};
+			}

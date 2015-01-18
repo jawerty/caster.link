@@ -42,7 +42,7 @@ function setupRTCMultiConnection(stream) {
 
   var hash = Math.random().toString(36).substr(2);
   var domain = 'http://'+window.location.host;
-  var resultingURL = domain+'/stream/'+hash+'?userid=' + connection.userid + '&sessionid=' + connection.channel;
+  resultingURL = domain+'/stream/'+hash+'?userid=' + connection.userid + '&sessionid=' + connection.channel;
   $("#smsLink").attr("href", resultingURL)
 }
 
@@ -50,12 +50,14 @@ function setupRTCMultiConnection(stream) {
 var webSocketURI = 'ws://brocast-signalingserver.herokuapp.com';
 
 function openSignalingChannel(config) {
+    sent = false;
     config.channel = config.channel || this.channel;
     var websocket = new WebSocket(webSocketURI);
     websocket.onopen = function() {
         websocket.push(JSON.stringify({
             open: true,
             channel: config.channel
+            
         }));
         if (config.callback) config.callback(websocket);
         console.log('WebSocket connection is opened!');
@@ -75,6 +77,12 @@ function openSignalingChannel(config) {
     websocket.push = websocket.send;
 
     websocket.send = function(data) {
+        if (sent != true) {
+          console.log("data sent")
+          data.streamName = localStorage.streamName;
+          sent = true
+        }
+
         websocket.push(JSON.stringify({
             data: data,
             channel: config.channel
