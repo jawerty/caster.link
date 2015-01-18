@@ -34,15 +34,18 @@ block content
 
 		.modalOverlay
 			#socialModal.casterModal
-				.headerBar
-					h1.title Social
+				h1.title Social
 				.content
 					.row.sharingOptions
-						.col.icon.ion-social-facebook
-						.col.icon.ion-social-twitter
+						.col.icon.ion-social-facebook.facebook
+							a(href="mailto:bogdanvitoc")
+						.col.icon.ion-social-twitter.twitter
+							a(href="mailto:bogdanvitoc")
 					.row.sharingOptions
 						.col.icon.ion-email.email
+							
 						.col.icon.ion-android-chat.sms
+							
 					.row.sharingOptions
 						.col.list
 							label.item.item-input
@@ -50,13 +53,16 @@ block content
 
 		script(src="javascripts/casterfrontend.js")
 		script.
+
 			$().ready(function(){
+
 				var modalOverlay = $(".modalOverlay");
 				$("video").click(function(){
 					var header = $(".bar-header");
 					header.toggleClass("reveal");
 				});
 				$("button.button.social").click(function() {
+					
 					modalOverlay.fadeToggle();
 				});
 				modalOverlay.click(function(e){
@@ -64,4 +70,25 @@ block content
 					console.log("TOGGLE");
 					modalOverlay.fadeToggle();
 				});
+				
+				$(".icon.facebook").click(function(){
+
+				});
+
+				$(".icon.twitter").click(function(){
+
+				});
+
+				$(".icon.email").click(function() {
+					var a = $("<a href='mailto:?subject=Caster Stream&body="+resultingUrl+">");
+					$($("body")[0]).append(a);
+					a.click();
+
+				});
+				$(".icon.sms").click(function(){
+					var a = $("<a href='sms:?subject=Caster Stream&body="+resultingUrl+">");
+					$($("body")[0]).append(a);
+					a.click();
+				});
+
 			});
