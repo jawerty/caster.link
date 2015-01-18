@@ -63,12 +63,12 @@ block content
 					var header = $(".bar-header");
 					header.toggleClass("reveal");
 				});
-				$("button.button.social").click(function() {
+				$("button.button.social").on("touchend", function() {
 
 					modalOverlay.fadeToggle();
 				});
 				
-				$("#socialModal .close").click(function(e){
+				$("#socialModal .close").on("touchend", function(e){
 					console.log(e.relatedTarget);
 					console.log("TOGGLE");
 					modalOverlay.fadeToggle();
@@ -77,17 +77,17 @@ block content
 
 				});
 
-				$(".icon.twitter").click(function(){
+				$(".icon.twitter").on("touchend", function(){
 					$($("a.twitter-share-button")[0]).click();	
 				});
 
-				$(".icon.email").click(function() {
+				$(".icon.email").on("touchend", function() {
 					var a = $("<a href='mailto:?subject=Caster Stream&body="+resultingUrl+">");
 					$($("body")[0]).append(a);
 					a.click();
 
 				});
-				$(".icon.sms").click(function(){
+				$(".icon.sms").on("touchend", function(){
 					var a = $("<a href='sms:?subject=Caster Stream&body="+resultingUrl+">");
 					$($("body")[0]).append(a);
 					a.click();
