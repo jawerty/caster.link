@@ -14,6 +14,9 @@ html
 		script(src="../javascripts/services.js")
 
 		style.
+			body {
+				background-color: #000;
+			}
 			@media screen and (max-width: 480px) {
 				#video-channel {
 					width: 100%;
@@ -45,15 +48,15 @@ html
 			}
 
 	body(ng-app="starter", ontouchstart="")
-		ion-view(view-title="Caster")
 
-			ion-nav-bar.bar-calm.nav-title-slide-ios7(align-title='center')
-				ion-nav-buttons(side='primary')
-				ion-nav-back-button.button-icon.ion-arrow-left-c       
-				ion-nav-buttons(side='secondary')
-			ion-nav-view.slide-left-right
+		ion-nav-bar.bar-calm.nav-title-slide-ios7(align-title='center')
+			ion-nav-buttons(side='primary')
+			ion-nav-back-button.button-icon.ion-arrow-left-c       
+			ion-nav-buttons(side='secondary')
+		ion-nav-view.slide-left-right
 
-			ion-content
+		ion-content
+			ion-view(view-title="Caster")
 				div(id="video-channel")
 				script.
 					var sessionID = "#{sessionID}";

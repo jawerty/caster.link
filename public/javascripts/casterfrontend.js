@@ -41,7 +41,7 @@ function setupRTCMultiConnection(stream) {
   });
 
   var hash = Math.random().toString(36).substr(2);
-  var domain = 'http://www.caster.link';
+  var domain = 'http://'+window.location.host;
   var resultingURL = domain+'/stream/'+hash+'?userid=' + connection.userid + '&sessionid=' + connection.channel;
   $("#smsLink").attr("href", resultingURL)
 }
