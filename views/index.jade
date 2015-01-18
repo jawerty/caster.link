@@ -36,15 +36,15 @@ block content
 
           #stream-name(style="text-align: center;")
           .card(style="width: 60%;")
-            input#stream-name(type="text" placeholder="Name your stream")
+            input#stream-name(type="text" placeholder="Name your stream...")
 
-          input#videoCaptureInput(type="file", accept="video/*", capture="camcorder", style="display:none;")
-          input#audioCaptureInput(type="file", accept="audio/*", capture="", style="display:none;")
-          #cameraOptions
-            #frontCameraOption.cameraSwitch.activated
-                | Front
-              #backCameraOption.cameraSwitch
-                | Back
-          .start.raised.green
-            a(href="/userView", id="startButton")
-              #startButton.center START
+            input#videoCaptureInput(type="file", accept="video/*", capture="camcorder", style="display:none;")
+            input#audioCaptureInput(type="file", accept="audio/*", capture="", style="display:none;")
+            #cameraOptions
+              #frontCameraOption.cameraSwitch.activated
+                  | Front
+                #backCameraOption.cameraSwitch
+                  | Back
+            .start.raised.green
+              a(href="/userView", id="startButton")
+                #startButton.center START
