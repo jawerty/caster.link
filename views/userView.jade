@@ -21,12 +21,12 @@ block content
 		    ion-nav-view.slide-left-right
 		    
 		    script(id='templates/home.html', type='text/ng-template')
-		      ion-view(view-title"<h1 class='title' style='font-family:lato;font-size: 150%;'>Caster</h1>")
+		      ion-view(view-title="<h1 class='title' style='font-family:lato;font-size: 150%;'>Caster</h1>")
 		        ion-content
 		          .card(style="width: 70%";)
 		          .item item-text-wrap(style="text-align: center;")
 		            | Title
 
 		          a(href="", id="smsLink") Share
-				  video#v(autoplay="")
+				  video#v(autoplay="", muted="true")
 				  script(src="javascripts/casterfrontend.js")

@@ -97,6 +97,8 @@ function gotStream(stream) {
   
 
   setupRTCMultiConnection(stream);
+
+  delete localStorage.getItem("casterCameraFacing");
 }
 
 function getUserMediaError() {
@@ -138,14 +140,14 @@ navigator.getUserMedia = (navigator.getUserMedia ||
         alert('This browser does not support MediaStreamTrack.\n\nTry Chrome Canary.');
       } else {
         MediaStreamTrack.getSources(function(sourceInfos) {
-          var Audio = [];
+          var Audio;
           var Video;
 
           for (var i = 0; i !== sourceInfos.length; ++i) {
             var sourceInfo = sourceInfos[i];
             console.log(sourceInfo)
             if (sourceInfo.kind === 'audio') {
-              Audio.push(sourceInfo.id);
+              Audio = sourceInfo.id;
             } else if (sourceInfo.kind === 'video') {
               var cameraFacing = localStorage.getItem("casterCameraFacing");
               if(sourceInfo.facing == cameraFacing){
@@ -159,7 +161,7 @@ navigator.getUserMedia = (navigator.getUserMedia ||
 
           var constraints = {
             audio: {
-              optional: [{sourceId: Audio[0]}]
+              optional: [{sourceId: Audio}]
             },
             video: {
               optional: [{sourceId: Video}]
