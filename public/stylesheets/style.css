@@ -1,3 +1,8 @@
+a{
+	text-decoration: none;
+	color: white;
+}
+
 .card{
 	margin-left: auto;
     margin-right: auto;
@@ -36,7 +41,7 @@
 }
 
 .start.green {
-	background-color: #FF3A2D;
+	background-color: #4CDA64;
 	color: #fff;
 }
 .start.green:active, .start.green:hover, .start.green.fake-active {
