@@ -25,13 +25,10 @@ block content
 		//- h1 User View
 		//- a(href="", id="smsLink") Share
 		video#v(autoplay="")
-		ion-nav-bar.bar-calm.nav-title-slide-ios7(align-title='center')
-			ion-nav-buttons(side='primary')
-				a.button.button-icon.button-clear.ion-home(ui-sref='home', ng-if='$root.settingsPage == true')  
-			ion-nav-back-button.button-icon.ion-arrow-left-c       
-			ion-nav-buttons(side='secondary')
-				a.button.button-icon.button-clear.ion-gear-a(ui-sref='about', ng-if='$root.settingsPage == false') 
-		ion-nav-view.slide-left-right(style="display:none;")
+		ion-header-bar.bar-calm(align-title='center')
+			button.button.icon.ion-arrow-left-a
+			h1.title Caster
+			button.button.icon.ion-person-stalker
 
 		script(src="javascripts/casterfrontend.js")
 		script.

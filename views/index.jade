@@ -21,6 +21,12 @@ block content
       script(src="javascripts/controllers.js")
       script(src="javascripts/services.js")
   body(ng-app="starter", ontouchstart="")
+    script.
+      function setTitle(this) {
+        localStorage.streamName = $(this).val()
+      }
+      
+
     ion-nav-bar.bar-calm.nav-title-slide-ios7(align-title='center')
       ion-nav-buttons(side='primary')
         a.button.button-icon.button-clear.ion-home(ui-sref='home', ng-if='$root.settingsPage == true')  
@@ -37,7 +43,7 @@ block content
               | Live stream videos as you record them on your Android device.
 
           .card(style="width: 80%;")
-            input#stream-name(type="text" placeholder="Name your stream...")
+            input#stream-name(type="text", onclick="setTitle(this)" placeholder="Name your stream...")
 
             input#videoCaptureInput(type="file", accept="video/*", capture="camcorder", style="display:none;")
             input#audioCaptureInput(type="file", accept="audio/*", capture="", style="display:none;")
