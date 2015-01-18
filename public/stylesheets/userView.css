@@ -92,6 +92,7 @@
 #link {
 	background-color: transparent;
 	cursor: text;
+	overflow: auto;
 }
 
 /*.sharingOptions input {
