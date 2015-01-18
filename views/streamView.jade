@@ -89,6 +89,7 @@ html
 
 				function openSignalingChannel(config) {
 					config.channel = config.channel || this.channel;
+					console.log("this"+config)
 					var websocket = new WebSocket('ws://ec2-54-173-12-168.compute-1.amazonaws.com/');
 					websocket.onopen = function () {
 						setTimeout(function(){
