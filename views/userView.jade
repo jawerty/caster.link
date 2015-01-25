@@ -4,6 +4,9 @@ block content
 		head
 			meta(charset="utf-8")
 			meta(name="viewport", content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width")
+			meta(property="og:title", content="Caster Live Stream")
+			meta(property="og:site_name", content="Caster")
+			meta(property="og:description", content="Join my Caster live stream.")
 			title
 			script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
 			script(src="javascripts/RTCMultiConnection-v1.9.js")
@@ -40,14 +43,10 @@ block content
 				.content
 					.row.sharingOptions
 						.col.icon.ion-social-facebook.facebook
-							a(href="mailto:bogdanvitoc")
 						.col.icon.ion-social-twitter.twitter
-							//- a.twitter-share-button(href="https://twitter.com/share")
 					.row.sharingOptions
 						.col.icon.ion-email.email
-							
 						.col.icon.ion-android-chat.sms
-							
 					.row.sharingOptions
 						.col.list
 							label.item.item-input
@@ -57,14 +56,12 @@ block content
 		script.
 
 			$().ready(function(){
-
 				var modalOverlay = $(".modalOverlay");
 				$("video").click(function(){
 					var header = $(".bar-header");
 					header.toggleClass("reveal");
 				});
 				$("button.button.social").on("touchend", function() {
-
 					modalOverlay.fadeToggle();
 				});
 				
@@ -73,23 +70,22 @@ block content
 					console.log("TOGGLE");
 					modalOverlay.fadeToggle();
 				});
-				$(".icon.facebook").click(function(){
-
+				$(".facebook").click(function(){
+					console.log("facebook");
+					window.location.href = 'http://www.facebook.com/sharer/sharer.php?u='+resultingURL;
 				});
 
-				$(".icon.twitter").on("touchend", function(){
-					$($("a.twitter-share-button")[0]).click();	
+				$(".twitter").on("touchend", function(){
+					console.log("twitter");
+					window.location.href = 'https://twitter.com/intent/tweet?url=Join my Caster live stream '+resultingURL;
 				});
 
-				$(".icon.email").on("touchend", function() {
-					var a = $("<a href='mailto:?subject=Caster Stream&body="+resultingUrl+">");
-					$($("body")[0]).append(a);
-					a.click();
-
+				$(".email").on("touchend", function() {
+					console.log("email");
+					window.location.href = 'mailto:?subject=Caster Stream&body=Join my Caster live stream '+resultingURL;
 				});
-				$(".icon.sms").on("touchend", function(){
-					var a = $("<a href='sms:?subject=Caster Stream&body="+resultingUrl+">");
-					$($("body")[0]).append(a);
-					a.click();
+				$(".sms").on("touchend", function(){
+					console.log("sms");
+					window.location.href = 'sms:?subject=Caster Stream&body=Join my Caster live stream '+resultingURL;
 				});
 			});

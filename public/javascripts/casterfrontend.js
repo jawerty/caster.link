@@ -8,6 +8,7 @@ function error() {
 }
 
 var connection;
+var resultingURL;
 
 function setupRTCMultiConnection(stream) {
   connection = new RTCMultiConnection();
