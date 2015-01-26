@@ -113,3 +113,7 @@ html, body {
 	border: 1px solid #fff;
 	opacity: 1;
 }
+
+#info:hover{
+	opacity: .4;
+}
